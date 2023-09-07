@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
         binding.btnTanpaLogin.setOnClickListener {
             val sharedPrefs = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
             val editor = sharedPrefs.edit()
-            editor.putBoolean("isLoggedIn", false) // Atur status menjadi false
+            editor.putBoolean("isLoggedIn", false)
             editor.apply()
 
             val intent = Intent(this, MainActivity::class.java)
@@ -64,7 +64,7 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) {
                 if (it.isSuccessful) {
-                    // Login berhasil, simpan status login sebagai true
+
                     val sharedPrefs = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
                     val editor = sharedPrefs.edit()
                     editor.putBoolean("isLoggedIn", true)

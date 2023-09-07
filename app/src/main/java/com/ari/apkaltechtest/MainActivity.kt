@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         val isLoggedIn = sharedPrefs.getBoolean("isLoggedIn", false)
         Log.d("MainActivity", "isLoggedIn: $isLoggedIn")
         if (!isLoggedIn) {
-            // Jika pengguna TIDAK login, tampilkan tombol back di toolbar
+
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
             supportActionBar?.setDisplayShowHomeEnabled(true)
         }
@@ -58,10 +58,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val sharedPrefs = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-        val isLoggedIn = sharedPrefs.getBoolean("isLoggedIn", false) // Baca status login dari SharedPreferences
+        val isLoggedIn = sharedPrefs.getBoolean("isLoggedIn", false)
 
         if (isLoggedIn) {
-            menuInflater.inflate(R.menu.toolbar_menu, menu) // Tampilkan menu jika sudah login
+            menuInflater.inflate(R.menu.toolbar_menu, menu)
         }
 
         return true
@@ -71,20 +71,20 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.tbLogout -> {
-                // Handle logout
+
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
                 return true
             }
             R.id.tbNotification -> {
-                // Handle notification
+
                 val intent = Intent(this, NotificationActivity::class.java)
                 startActivity(intent)
                 return true
             }
             android.R.id.home -> {
-                // Handle toolbar back button
+
                 onBackPressed()
                 return true
             }
